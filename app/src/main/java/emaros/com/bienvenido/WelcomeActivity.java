@@ -20,6 +20,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private RecyclerView matRecyclerView;
     private RecyclerView.Adapter matAdapter;
     private RecyclerView.LayoutManager matLayoutManager;
+    List<Materia> materias;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +35,18 @@ public class WelcomeActivity extends AppCompatActivity {
         matRecyclerView.setLayoutManager(matLayoutManager);
 
         //Cargar los elementos al adapatador
-        initializeAdapter(initializeData());
+        initializeData();
+        initializeAdapter(materias);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Se agrego una materia mas", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                materias.add(new Materia("IAI115","Introduccion a la informatica", BitmapFactory.decodeResource(getResources(), R.drawable.ball)));
+                initializeAdapter(materias);
             }
         });
     }
@@ -55,12 +60,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
     //Llenar datos que se cargaran
-    private List<Materia> initializeData(){
-        List<Materia> materias = new ArrayList<>();
+    private void initializeData(){
+        materias = new ArrayList<>();
         materias.add(new Materia("IAI115","Introduccion a la informatica", BitmapFactory.decodeResource(getResources(), R.drawable.ball)));
         materias.add(new Materia("HDP115","Herramientas de productividad", BitmapFactory.decodeResource(getResources(), R.drawable.ball)));
         materias.add(new Materia("SIO115","Sistemas Operativos", BitmapFactory.decodeResource(getResources(), R.drawable.ball)));
-        return  materias;
+
     }
 
 
