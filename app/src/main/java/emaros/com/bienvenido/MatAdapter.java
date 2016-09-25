@@ -57,7 +57,7 @@ public class MatAdapter  extends RecyclerView.Adapter<MatAdapter.MateriaViewHold
 
         materiaViewHolder.txt_nombre.setText(materias.get(position).getNombre());
         materiaViewHolder.txt_codigo.setText(materias.get(position).getCodigo());
-        materiaViewHolder.img_medalla.setImageBitmap(materias.get(position).getImagen());
+        //materiaViewHolder.img_medalla.setImageBitmap(materias.get(position).getImagen());
 
     }
 
